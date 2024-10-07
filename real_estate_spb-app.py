@@ -35,7 +35,7 @@ def user_input_features():
     cityCenters_nearest = st.sidebar.slider('Расстояние до центра города, км', 0.0,25.0,14.9)
     total_area = st.sidebar.slider('Общая площадь квартиры, м2', 13.0,120.0,33.8)
     living_area = st.sidebar.slider('Жилая площадь квартиры, м2', 14.0,90.0,17.6)
-    kitchen_area = st.sidebar.slider('Площадь кухни, м2', 5.0,60.0,7.5)
+    kitchen_area = st.sidebar.slider('Площадь кухни, м2', 5.0,45.0,7.5)
     rooms = st.sidebar.slider('Кол-во комнат', 0, 10, 1)
     ceiling_height = st.sidebar.slider('Высота потолков, м', 2.0,4.0,2.56)
     balcony = st.sidebar.slider('Кол-во балконов', 0, 5, 1)
