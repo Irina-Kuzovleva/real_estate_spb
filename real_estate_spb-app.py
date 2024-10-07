@@ -129,9 +129,11 @@ df = df[:1]
 load_real_estate_spb = pickle.load(open('real_estate_spb.pkl', 'rb'))
 
 prediction = load_real_estate_spb.predict(df)
-prediction = prediction[0]
-prediction = str(prediction)[::-1]
-prediction = ' '.join(prediction[i:i+3] for i in range(0, len(prediction), 3))[::-1]
+prediction_final = prediction[0]
+prediction_final = '{0:,}'.format(prediction_final).replace(',', ' ')
+
+#prediction = str(prediction)[::-1]
+#prediction = ' '.join(prediction[i:i+3] for i in range(0, len(prediction), 3))[::-1]
 
 prediction_m2 = prediction / df['total_area']
 
@@ -147,7 +149,7 @@ st.markdown("""
 #st.write(round(prediction[0]))
 
 st.subheader('Предполагаемая рыночная цена квартиры')
-st.write(round(prediction))
+st.write(round(prediction_final))
 
 st.subheader('Предполагаемая цена за м2')
 st.write(round(prediction_m2[0]))
