@@ -149,7 +149,17 @@ st.markdown("""
 #st.write(prediction_final)
 
 st.subheader('Рыночная цена квартиры')
-st.write('<p class="big-font">{prediction_final}</p>', unsafe_allow_html=True)
+st.write(prediction_final)
+
+st.components.v1.html(
+    f"""
+    <script>
+        var elems = window.parent.document.querySelectorAll('div[class*="stTextInput"] p');
+        var elem = Array.from(elems).find(x => x.innerText == '{prediction_final}');
+        elem.style.fontSize = '50px'; // the fontsize you want to set it to
+    </script>
+    """
+)
 
 
 st.subheader('Цена за м2')
