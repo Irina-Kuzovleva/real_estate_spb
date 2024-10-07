@@ -145,12 +145,13 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-#st.subheader('Предполагаемая рыночная цена квартиры')
-#st.write(round(prediction[0]))
+#st.subheader('Рыночная цена квартиры')
+#st.write(prediction_final)
 
-st.subheader('Предполагаемая рыночная цена квартиры')
-st.write(prediction_final)
+st.subheader('Рыночная цена квартиры')
+st.write('<p class="big-font">{prediction_final}</p>', unsafe_allow_html=True)
 
-st.subheader('Предполагаемая цена за м2')
+
+st.subheader('Цена за м2')
 st.write(round(prediction_m2[0]))
 
