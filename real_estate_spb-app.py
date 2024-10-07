@@ -132,8 +132,8 @@ prediction = load_real_estate_spb.predict(df)
 prediction_m2 = prediction / df['total_area']
 
 st.subheader('Предполагаемая рыночная цена квартиры')
-st.write(round(prediction,0))
+st.write(round(prediction[0],0))
 
 st.subheader('Предполагаемая цена за м2')
-st.write(round(prediction_m2,0))
+st.write(round(prediction_m2[0],0))
 
