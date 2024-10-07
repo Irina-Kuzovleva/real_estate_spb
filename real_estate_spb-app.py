@@ -129,7 +129,7 @@ df = df[:1]
 load_real_estate_spb = pickle.load(open('real_estate_spb.pkl', 'rb'))
 
 prediction = load_real_estate_spb.predict(df)
-prediction_final = prediction[0]
+prediction_final = round(prediction[0])
 prediction_final = '{0:,}'.format(prediction_final).replace(',', ' ')
 
 #prediction = str(prediction)[::-1]
@@ -149,7 +149,7 @@ st.markdown("""
 #st.write(round(prediction[0]))
 
 st.subheader('Предполагаемая рыночная цена квартиры')
-st.write(round(prediction_final))
+st.write(prediction_final)
 
 st.subheader('Предполагаемая цена за м2')
 st.write(round(prediction_m2[0]))
