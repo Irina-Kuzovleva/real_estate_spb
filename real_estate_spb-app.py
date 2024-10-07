@@ -134,7 +134,7 @@ prediction_m2 = prediction / df['total_area']
 st.markdown("""
 <style>
 .big-font {
-    font-size:300px !important;
+    font-size:100px !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -143,7 +143,7 @@ st.markdown("""
 #st.write(round(prediction[0]))
 
 st.subheader('Предполагаемая рыночная цена квартиры')
-st.write('<p class="big-font">round(prediction[0])</p>', unsafe_allow_html=True)
+st.write(round(prediction[0]), class="big-font", unsafe_allow_html=True)
 
 st.subheader('Предполагаемая цена за м2')
 st.write(round(prediction_m2[0]))
