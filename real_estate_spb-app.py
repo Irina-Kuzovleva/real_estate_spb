@@ -8,6 +8,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
+import xgboost as xgb
+
 
 
 # In[ ]:
@@ -29,21 +31,20 @@ st.sidebar.header('Параметры квартиры')
 #Собираем данные и создаем таблицу
 
 def user_input_features():
-    
-    total_area = st.sidebar.slider('Общая площадь квартиры, м2', 13.0,250.0,33.8)
-    living_area = st.sidebar.slider('Жилая площадь квартиры, м2', 14.0,200.0,17.6)
-    kitchen_area = st.sidebar.slider('Площадь кухни, м2', 5.0,80.0,7.5)
+
+    cityCenters_nearest = st.sidebar.slider('Расстояние до центра города, км', 0.0,25.0,14.9)
+    total_area = st.sidebar.slider('Общая площадь квартиры, м2', 13.0,150.0,33.8)
+    living_area = st.sidebar.slider('Жилая площадь квартиры, м2', 14.0,100.0,17.6)
+    kitchen_area = st.sidebar.slider('Площадь кухни, м2', 5.0,60.0,7.5)
     rooms = st.sidebar.slider('Кол-во комнат', 0, 10, 1)
     ceiling_height = st.sidebar.slider('Высота потолков, м', 2.0,4.0,2.56)
     balcony = st.sidebar.slider('Кол-во балконов', 0, 5, 1)
     floor = st.sidebar.slider('Этаж квартиры', 1, 50, 6) 
     floors_total = st.sidebar.slider('Всего этажей в доме', 1,50,9)
-    is_apartment = st.sidebar.selectbox('Является ли апартаментами',('Да','Нет'))
-    studio = st.sidebar.selectbox('Является ли студией',('Да','Нет'))
-    open_plan = st.sidebar.selectbox('Со свободной планировкой',('Да','Нет'))
-    cityCenters_nearest = st.sidebar.slider('Расстояние до центра города, км', 0.0,25.0,14.9)
-    
-    
+    is_apartment = st.sidebar.selectbox('Является ли апартаментами',('Нет','Да'))
+    studio = st.sidebar.selectbox('Является ли студией',('Нет','Да'))
+    open_plan = st.sidebar.selectbox('Со свободной планировкой',('Нет','Да'))
+      
     
     data = {'total_area': total_area,
             'rooms': rooms,
