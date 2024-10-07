@@ -131,7 +131,7 @@ load_real_estate_spb = pickle.load(open('real_estate_spb.pkl', 'rb'))
 prediction = load_real_estate_spb.predict(df)
 prediction = prediction[0]
 prediction = str(prediction)[::-1]
-prediction = ' '.join(prediction[i:i+3] for i in range(0, len(n), 3))[::-1])
+prediction = ' '.join(prediction[i:i+3] for i in range(0, len(n), 3))[::-1]
 
 prediction_m2 = prediction / df['total_area']
 
