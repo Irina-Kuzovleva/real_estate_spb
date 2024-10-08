@@ -135,15 +135,16 @@ prediction_final = '{0:,}'.format(prediction_final).replace(',', ' ')
 #prediction = str(prediction)[::-1]
 #prediction = ' '.join(prediction[i:i+3] for i in range(0, len(prediction), 3))[::-1]
 
-prediction_m2 = prediction / df['total_area']
+prediction_m2 = prediction[0] / df['total_area'][0]
+prediction_m2 = round(prediction_m2)
 
-st.markdown("""
-<style>
-.big-font {
-    font-size:100px !important;
-}
-</style>
-""", unsafe_allow_html=True)
+#st.markdown("""
+#<style>
+#.big-font {
+#    font-size:100px !important;
+#}
+#</style>
+#""", unsafe_allow_html=True)
 
 #st.subheader('Рыночная цена квартиры')
 #st.write(prediction_final)
@@ -151,17 +152,6 @@ st.markdown("""
 st.subheader('Рыночная цена квартиры')
 st.write(prediction_final)
 
-st.components.v1.html(
-    f"""
-    <script>
-        var elems = window.parent.document.querySelectorAll('div[class*="stTextInput"] p');
-        var elem = Array.from(elems).find(x => x.innerText == '{prediction_final}');
-        elem.style.fontSize = '50px'; // the fontsize you want to set it to
-    </script>
-    """
-)
-
-
 st.subheader('Цена за м2')
-st.write(round(prediction_m2[0]))
+st.write(prediction_m2)
 
