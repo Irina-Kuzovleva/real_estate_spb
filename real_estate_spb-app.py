@@ -154,5 +154,5 @@ st.subheader('Рыночная цена квартиры')
 st.write(prediction_final)
 
 st.subheader('Цена за м2')
-st.write(prediction_m2)
+st.write(prediction_m2_final)
 
