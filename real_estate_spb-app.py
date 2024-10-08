@@ -1,19 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 import streamlit as st
 import pandas as pd
-#import numpy as np
 import pickle
 import xgboost as xgb
-
-
-
-# In[ ]:
-
 
 st.write("""
 # Калькулятор стоимости квартиры
@@ -23,9 +11,6 @@ st.write("""
 """)
 
 st.sidebar.header('Параметры квартиры')
-
-
-# In[ ]:
 
 
 #Собираем данные и создаем таблицу
@@ -64,9 +49,6 @@ def user_input_features():
     return features
     
 input_df = user_input_features()
-
-
-# In[ ]:
 
 
 #Обработаем переменные и создадим дополнительные
@@ -113,16 +95,10 @@ input_df['cityCenters_nearest'] = input_df['cityCenters_nearest'] * 1000
 input_df['floor_category'] = input_df.apply(categorize_floors, axis=1)
 
 
-# In[ ]:
-
-
 #Финальная версия тестовой выборки
 real_estate_spb_raw = pd.read_csv('https://raw.githubusercontent.com/Irina-Kuzovleva/real_estate_spb/master/real_estate_spb_cleaned.csv')
 df = pd.concat([input_df,real_estate_spb_raw],axis=0)
 df = df[:1]
-
-
-# In[ ]:
 
 
 #Загружаем модель и делаем предсказания
@@ -132,23 +108,11 @@ prediction = load_real_estate_spb.predict(df)
 prediction_final = round(prediction[0])
 prediction_final = '{0:,}'.format(prediction_final).replace(',', ' ')
 
-#prediction = str(prediction)[::-1]
-#prediction = ' '.join(prediction[i:i+3] for i in range(0, len(prediction), 3))[::-1]
 
 prediction_m2 = prediction[0] / df['total_area'][0]
 prediction_m2_final = round(prediction_m2)
 prediction_m2_final = '{0:,}'.format(prediction_m2_final).replace(',', ' ')
 
-#st.markdown("""
-#<style>
-#.big-font {
-#    font-size:100px !important;
-#}
-#</style>
-#""", unsafe_allow_html=True)
-
-#st.subheader('Рыночная цена квартиры')
-#st.write(prediction_final)
 
 st.subheader('Рыночная цена квартиры')
 st.write(prediction_final)
