@@ -136,7 +136,8 @@ prediction_final = '{0:,}'.format(prediction_final).replace(',', ' ')
 #prediction = ' '.join(prediction[i:i+3] for i in range(0, len(prediction), 3))[::-1]
 
 prediction_m2 = prediction[0] / df['total_area'][0]
-prediction_m2 = round(prediction_m2)
+prediction_m2_final = round(prediction_m2)
+prediction_m2_final = '{0:,}'.format(prediction_m2_final).replace(',', ' ')
 
 #st.markdown("""
 #<style>
